@@ -1,6 +1,6 @@
-# AMI 1700 device via web interface
+# AMI 1700 device via socket interface
 
-record(ai, "$(P):LT$(NR)-V:sRdV") {
+record(ai, "$(P)$(DEV)-V:sRdV") {
    field (DESC, "Probe's voltage")
    field (EGU, "V")
    field (DTYP, "stream")
@@ -12,10 +12,10 @@ record(ai, "$(P):LT$(NR)-V:sRdV") {
 #   field (LSV, "MINOR")
 #   field (LLSV, "MAJOR")
    field (INP, "@ami.proto get_adc(0) $(PORT)")
-   field (FLNK, "$(P):LT$(NR)-V-smooth:sRdV")
+   field (FLNK, "$(P)$(DEV)-V-smooth:sRdV")
    field (SCAN, "$(SCAN) second")
 }
-record(ai, "$(P):LT$(NR)-V-smooth:sRdV") {
+record(ai, "$(P)$(DEV)-V-smooth:sRdV") {
    field (DESC, "Smoothed probe's voltage")
    field (EGU, "V")
    field (DTYP, "Raw Soft Channel")
@@ -23,12 +23,12 @@ record(ai, "$(P):LT$(NR)-V-smooth:sRdV") {
    field (HOPR, "100.0")
    field (SMOO, "0.95")
    field (PREC, "2")
-   field (INP, "$(P):LT$(NR)-V:sRdV")
-   field (FLNK, "$(P):LT$(NR)-R:sRdV")
+   field (INP, "$(P)$(DEV)-V:sRdV")
+   field (FLNK, "$(P)$(DEV)-R:sRdV")
 }
 
 
-record(ai, "$(P):LT$(NR)-PS:sRdV") {
+record(ai, "$(P)$(DEV)-PS:sRdV") {
    field (DESC, "Probe's PS voltage")
    field (EGU, "V")
    field (DTYP, "stream")
@@ -40,10 +40,10 @@ record(ai, "$(P):LT$(NR)-PS:sRdV") {
 #   field (LSV, "MINOR")
 #   field (LLSV, "MAJOR")
    field (INP, "@ami.proto get_adc(1) $(PORT)")
-   field (FLNK, "$(P):LT$(NR)-PS-smooth:sRdV")
+   field (FLNK, "$(P)$(DEV)-PS-smooth:sRdV")
    field (SCAN, "$(SCAN) second")
 }
-record(ai, "$(P):LT$(NR)-PS-smooth:sRdV") {
+record(ai, "$(P)$(DEV)-PS-smooth:sRdV") {
    field (DESC, "Smoothed probe's PS voltage")
    field (EGU, "V")
    field (DTYP, "Raw Soft Channel")
@@ -51,11 +51,11 @@ record(ai, "$(P):LT$(NR)-PS-smooth:sRdV") {
    field (HOPR, "100.0")
    field (SMOO, "0.95")
    field (PREC, "2")
-   field (INP, "$(P):LT$(NR)-PS:sRdV")
+   field (INP, "$(P)$(DEV)-PS:sRdV")
 }
 
 
-record(ai, "$(P):LT$(NR)-I:sRdV") {
+record(ai, "$(P)$(DEV)-I:sRdV") {
    field (DESC, "Probe's current")
    field (EGU, "mA")
    field (DTYP, "stream")
@@ -67,10 +67,10 @@ record(ai, "$(P):LT$(NR)-I:sRdV") {
 #   field (LSV, "MINOR")
 #   field (LLSV, "MAJOR")
    field (INP, "@ami.proto get_adc(2) $(PORT)")
-   field (FLNK, "$(P):LT$(NR)-I-smooth:sRdV")
+   field (FLNK, "$(P)$(DEV)-I-smooth:sRdV")
    field (SCAN, "$(SCAN) second")
 }
-record(ai, "$(P):LT$(NR)-I-smooth:sRdV") {
+record(ai, "$(P)$(DEV)-I-smooth:sRdV") {
    field (DESC, "Smoothed probe's current")
    field (EGU, "mA")
    field (DTYP, "Raw Soft Channel")
@@ -78,30 +78,30 @@ record(ai, "$(P):LT$(NR)-I-smooth:sRdV") {
    field (HOPR, "75.0")
    field (SMOO, "0.95")
    field (PREC, "2")
-   field (INP, "$(P):LT$(NR)-I:sRdV")
+   field (INP, "$(P)$(DEV)-I:sRdV")
 }
 
-record(ai, "$(P):LT$(NR)-level:sRdV") {
+record(ai, "$(P)$(DEV)-level:sRdV") {
    field (DESC, "Probe's LHe level")
    field (DTYP, "stream")
    field (LOPR, "0")
    field (HOPR, "100.0")
    field (PREC, "1")
    field (INP, "@ami.proto get_level $(PORT)")
-   field (FLNK, "$(P):LT$(NR)-level-smooth:sRdV")
+   field (FLNK, "$(P)$(DEV)-level-smooth:sRdV")
    field (SCAN, "$(SCAN) second")
 }
-record(ai, "$(P):LT$(NR)-level-smooth:sRdV") {
+record(ai, "$(P)$(DEV)-level-smooth:sRdV") {
    field (DESC, "Smoothed probe's LHe level")
    field (DTYP, "Raw Soft Channel")
    field (LOPR, "0")
    field (HOPR, "100.0")
    field (SMOO, "0.95")
    field (PREC, "1")
-   field (INP, "$(P):LT$(NR)-level:sRdV")
+   field (INP, "$(P)$(DEV)-level:sRdV")
 }
 
-record(ai, "$(P):LT$(NR)-interval:sRdV") {
+record(ai, "$(P)$(DEV)-interval:sRdV") {
    field (DESC, "Probe's sampling interval")
    field (EGU, "min")
    field (DTYP, "stream")
@@ -112,7 +112,7 @@ record(ai, "$(P):LT$(NR)-interval:sRdV") {
    field (SCAN, "$(SCAN) second")
 }
 
-record(ai, "$(P):LT$(NR)-length:sRdV") {
+record(ai, "$(P)$(DEV)-length:sRdV") {
    field (DESC, "Probe's active length")
    field (DTYP, "stream")
    field (LOPR, "0")
@@ -122,7 +122,7 @@ record(ai, "$(P):LT$(NR)-length:sRdV") {
    field (SCAN, "$(SCAN) second")
 }
 
-record(mbbi,  "$(P):LT$(NR):sEGU") {
+record(mbbi,  "$(P)$(DEV):sEGU") {
    field (DESC, "Probe's EGU")
    field (ZRVL, "0")
    field (ZRST, "%")
@@ -135,28 +135,28 @@ record(mbbi,  "$(P):LT$(NR):sEGU") {
    field (DTYP, "stream")
 }
 
-record (sseq, "$(P):LT$(NR):sEGU-fanout") { 
+record (sseq, "$(P)$(DEV):sEGU-fanout") { 
    field (SCAN, "$(SCAN) second")
-   field (DOL1, "$(P):LT$(NR):sEGU")
-   field (LNK1, "$(P):LT$(NR)-level:sRdV.EGU PP") 
-   field (DOL2, "$(P):LT$(NR):sEGU")
-   field (LNK2, "$(P):LT$(NR)-level-smooth:sRdV.EGU PP") 
-   field (DOL3, "$(P):LT$(NR):sEGU")
-   field (LNK3, "$(P):LT$(NR)-length:sRdV.EGU PP") 
-   field (DOL4, "$(P):LT$(NR):sEGU")
-   field (LNK4, "$(P):LT$(NR)-length:cSetV.EGU PP") 
+   field (DOL1, "$(P)$(DEV):sEGU")
+   field (LNK1, "$(P)$(DEV)-level:sRdV.EGU PP") 
+   field (DOL2, "$(P)$(DEV):sEGU")
+   field (LNK2, "$(P)$(DEV)-level-smooth:sRdV.EGU PP") 
+   field (DOL3, "$(P)$(DEV):sEGU")
+   field (LNK3, "$(P)$(DEV)-length:sRdV.EGU PP") 
+   field (DOL4, "$(P)$(DEV):sEGU")
+   field (LNK4, "$(P)$(DEV)-length:cSetV.EGU PP") 
 }
 
-record(waveform, "$(P):LT$(NR)-Id") {
+record(waveform, "$(P)$(DEV)-Id") {
    field (DESC, "Probe's id")
    field (DTYP, "stream")
    field (INP, "@ami.proto get_id $(PORT)")
    field (FTVL, "CHAR")
    field (NELM, "100")
-   field (PINI, "YES")
+   field (SCAN, "10 second")
 }
 
-record(mbbi,  "$(P):LT$(NR):sConf") {
+record(mbbi,  "$(P)$(DEV):sConf") {
    field (DESC, "Controller's configuration")
    field (ZRVL, "0")
    field (ZRST, "Not for LHe")
@@ -171,10 +171,10 @@ record(mbbi,  "$(P):LT$(NR):sConf") {
    field (FRST, "2K  ≤80 inches")
    field (INP, "@ami.proto get_conf $(PORT)")
    field (DTYP, "stream")
-   field (PINI, "YES")
+   field (SCAN, "10 second")
 }
 
-record(stringin, "$(P):LT$(NR)-name:sRdV") {
+record(stringin, "$(P)$(DEV)-name:sRdV") {
    field (DESC, "Probe's name")
    field (DTYP, "stream")
    field (INP, "@ami.proto get_name $(PORT)")
@@ -186,24 +186,24 @@ record(stringin, "$(P):LT$(NR)-name:sRdV") {
 # Calculated data
 #############################################
 
-record(calc, "$(P):LT$(NR)-R:sRdV") {
+record(calc, "$(P)$(DEV)-R:sRdV") {
    field (DESC, "Probe's resistance")
    field (EGU, "Ώ")
    field (PREC, "1")
-   field (INPA, "$(P):LT$(NR)-I:sRdV")
-   field (INPB, "$(P):LT$(NR)-V:sRdV")
+   field (INPA, "$(P)$(DEV)-I:sRdV")
+   field (INPB, "$(P)$(DEV)-V:sRdV")
    field (CALC, "A#0?1000.0*B/A:-1")
    field (LOW, "-0.5")
    field (LSV, "MAJOR")
-   field (FLNK, "$(P):LT$(NR)-R-smooth:sRdV")
+   field (FLNK, "$(P)$(DEV)-R-smooth:sRdV")
 }
 
-record(calc, "$(P):LT$(NR)-R-smooth:sRdV") {
+record(calc, "$(P)$(DEV)-R-smooth:sRdV") {
    field (DESC, "Probe's resistance")
    field (EGU, "Ώ")
    field (PREC, "1")
-   field (INPA, "$(P):LT$(NR)-I-smooth:sRdV")
-   field (INPB, "$(P):LT$(NR)-V-smooth:sRdV")
+   field (INPA, "$(P)$(DEV)-I-smooth:sRdV")
+   field (INPB, "$(P)$(DEV)-V-smooth:sRdV")
    field (CALC, "A#0?1000.0*B/A:-1")
    field (LOW, "-0.5")
    field (LSV, "MAJOR")
@@ -213,19 +213,19 @@ record(calc, "$(P):LT$(NR)-R-smooth:sRdV") {
 # Commands and settings
 #############################################
 
-record(bo, "$(P):LT$(NR):cmdSH") {
+record(bo, "$(P)$(DEV):cmdSH") {
    field (DESC, "Set Sample and Hold mode")
    field (DTYP, "stream")
    field (OUT, "@ami.proto set_hold $(PORT)")
 }
 
-record(bo, "$(P):LT$(NR):cmdCont") {
+record(bo, "$(P)$(DEV):cmdCont") {
    field (DESC, "Set Continuous mode")
    field (DTYP, "stream")
    field (OUT, "@ami.proto set_cont $(PORT)")
 }
 
-record(mbbo, "$(P):LT$(NR):cEGU") {
+record(mbbo, "$(P)$(DEV):cEGU") {
    field (DESC, "Select EGU")
    field (DTYP, "stream")
    field (ZRVL, "0")
@@ -237,7 +237,7 @@ record(mbbo, "$(P):LT$(NR):cEGU") {
    field (OUT, "@ami.proto set_egu $(PORT)")
 }
 
-record(ao,  "$(P):LT$(NR)-length:cSetV") {
+record(ao,  "$(P)$(DEV)-length:cSetV") {
    field (DESC, "Probe's active length")
    field (EGU, "cm")
    field (DTYP, "stream")
@@ -247,7 +247,7 @@ record(ao,  "$(P):LT$(NR)-length:cSetV") {
    field (OUT, "@ami.proto set_length $(PORT)")
 }
 
-record(ao, "$(P):LT$(NR)-interval:cSetV") {
+record(ao, "$(P)$(DEV)-interval:cSetV") {
    field (DESC, "Probe's sampling interval")
    field (EGU, "min")
    field (DTYP, "stream")
@@ -257,7 +257,7 @@ record(ao, "$(P):LT$(NR)-interval:cSetV") {
    field (OUT, "@ami.proto set_interval $(PORT)")
 }
 
-record(stringout, "$(P):LT$(NR)-name:cSetV") {
+record(stringout, "$(P)$(DEV)-name:cSetV") {
    field (DESC, "Probe's name")
    field (DTYP, "stream")
    field (OUT, "@ami.proto set_name $(PORT)")
