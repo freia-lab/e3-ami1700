@@ -1,0 +1,82 @@
+# AMI.proto for AMI 1700 LHe level controller
+Terminator = CR LF;
+#ReadTimeout = 200;
+
+get_id {
+   out "*idn?";
+   in "%#s";
+   @init { out "*idn?";
+   	 in "%#s"; }
+}
+
+get_conf {
+   out "he?";
+   in "%d";
+   @init { out "he?";
+   	 in "%d"; }
+}
+
+get_name {
+   out "name:sens:he?";
+   in "%#s";
+}
+
+get_adc {
+   ExtraInput=Ignore;
+   replyTimeout = 1000;
+   out "meas:adc\$1?";
+   in "%f";
+}
+
+get_level {
+   out "meas:he:lev?";
+   in "%f";
+}
+
+get_interval {
+   out "he:int?";
+   in "%f";
+}
+
+get_length {
+   out "he:len?";
+   in "%f";
+}
+
+get_egu {
+   out "he:unit?";
+   in "%#{\%=0|C=1|I=2}";
+}
+
+set_hold {
+   out "meas:he:hold";
+   in "%*s";
+}
+set_cont {
+   out "meas:he:cont";
+   in "%*s";
+}
+
+set_egu {
+   out "conf:he:unit %d";
+   in "%*s";
+   @init { get_egu; }
+}
+
+set_length {
+   out "conf:he:len %f";
+   in "%*s";
+   @init { get_length; }
+}
+
+set_interval {
+   out "conf:int:samp %f";
+   in "%*s";
+   @init { get_interval; }
+}
+
+set_name {
+   out "conf:name:sens:he \"%s\"";
+   in "%*s";
+   @init { get_name; }
+}

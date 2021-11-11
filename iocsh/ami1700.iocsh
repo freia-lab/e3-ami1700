@@ -1,0 +1,41 @@
+# This should be the included snippet to configure and run the deployed IOC. It should be loaded with
+#
+#   iocshLoad("$(ami1700_DIR)/ami1700.iocsh")
+
+#- ###                AMI1700   iocsh               ###
+#- ####################################################
+#- >> Mandatory
+#- ASYN_PORT_NAME - ASYN port name  <name> on address <IPaddr> port <port>
+#- AMI_IP         - AMI controller IP address
+#-
+#- >> Optional
+#- https://epics.anl.gov/modules/soft/asyn/R4-29/asynDriver.html#drvAsynSerialPort
+#- 
+#- AMI_PORT	  - ASYN   AMI controller port , default 7180
+#- PRIORITY       - ASYN   PRIORITY, Default : 0
+#- NOAUTOCONNECT  - ASYN   noAutoconnect, Default : 0
+#-                         0 :    Auto connection
+#-                         1 : no Auto connection
+#- NOPROCESSEOS   - ASYN   noProcessEos, Default : 0
+#-
+#- LINKTYPE       - AMI linktype, Default : 0
+#-                  0 = TCP/IP
+#-                  1 = RTU
+#-                  2 = ASCII 
+#- TIMEOUT        - AMI timeout, Default : 3000
+#-                  ms, 0 -> 2000 (By modbus)
+#- WRITEDELAY     - AMI write delay ms
+#-
+epicsEnvSet(AMI_NAME,  "$(ASYN_PORT_NAME)")
+epicsEnvSet(AMI_INET,  "$(AMI_IP)")
+epicsEnvSet(AMI_PORT,  "$(AMI_PORT=7180)")
+epicsEnvSet(AMI_PRIORITY, "$(PRIORITY=0)")
+epicsEnvSet(AMI_NOAUTOCONNECT, "$(NOAUTOCONNECT=0)")
+epicsEnvSet(AMI_NOPROCESSEOS, "$(NOPROCESSEOS=0)")
+#-
+#-https://epics.anl.gov/modules/soft/asyn/R4-29/asynDriver.html#drvAsynSerialPort
+drvAsynIPPortConfigure($(AMI_NAME), $(AMI_INET):$(AMI_PORT),$(AMI_PRIORITY),$(AMI_NOAUTOCONNECT),$(AMI_NOPROCESSEOS))
+#-
+
+dbLoadRecords "ami.db", "PORT=$(AMI_NAME),P=CoW-LHe, NR=600, SCAN=2"
+

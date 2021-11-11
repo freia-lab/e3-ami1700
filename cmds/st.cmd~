@@ -1,0 +1,4 @@
+# This should be a test or example startup script
+require ami1700
+
+iocshLoad("$(ami1700_DIR)/ami1700.iocsh")
