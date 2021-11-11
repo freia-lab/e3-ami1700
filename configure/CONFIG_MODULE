@@ -1,9 +1,9 @@
 #
 EPICS_MODULE_NAME:=ami1700
 
-EPICS_MODULE_TAG:=master
+#EPICS_MODULE_TAG:=master
 #
-E3_MODULE_VERSION:=master
+E3_MODULE_VERSION:=1.3.0
 
 # Dependent module versions
 # For example:
