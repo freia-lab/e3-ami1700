@@ -209,6 +209,12 @@ record(calc, "$(P)$(DEV)-R-smooth:sRdV") {
    field (LSV, "MAJOR")
 }
 
+record(stringin, "$(P)$(DEV)-IPaddr") {
+   field (DESC, "Controller's IP address")
+   field (VAL, "$(AMI_IP)")
+   field (PINI, "YES")
+}
+
 #############################################
 # Commands and settings
 #############################################
