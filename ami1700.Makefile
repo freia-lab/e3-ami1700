@@ -32,7 +32,10 @@ include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
 
 REQUIRED += stream
 
-stream_VERSION=2.8.18
+REQUIRED += stream
+  ifneq ($(strip $(STREAM_DEP_VERSION)),)
+  stream_VERSION=$(STREAM_DEP_VERSION)
+endif
 
 ############################################################################
 #
