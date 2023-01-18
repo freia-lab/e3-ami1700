@@ -5,6 +5,9 @@ EPICS_MODULE_NAME:=ami1700
 #
 E3_MODULE_VERSION:=1.4.0
 
+OPI_VERSION := 1.2.0
+OPI_DIRNAME := gersemi-LHe-probes
+
 # Dependent module versions
 # For example:
 STREAM_DEP_VERSION:=2.8.22+0
@@ -13,6 +16,7 @@ STREAM_DEP_VERSION:=2.8.22+0
 E3_MODULE_NAME:=$(EPICS_MODULE_NAME)
 E3_MODULE_SRC_PATH:=ami1700
 E3_MODULE_MAKEFILE:=$(EPICS_MODULE_NAME).Makefile
+
 
 
 -include $(TOP)/configure/CONFIG_OPTIONS

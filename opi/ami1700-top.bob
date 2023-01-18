@@ -34,6 +34,7 @@
         <name>LT600</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:LT600</BIG_DSPL_PV>
           <DEV>LT600</DEV>
         </macros>
         <group_name></group_name>
@@ -42,6 +43,7 @@
         <name>LT670</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT670</DEV>
         </macros>
         <group_name></group_name>
@@ -50,6 +52,7 @@
         <name>LT671</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT671</DEV>
         </macros>
         <group_name></group_name>
@@ -58,6 +61,7 @@
         <name>LT680</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT680</DEV>
         </macros>
         <group_name></group_name>
@@ -66,6 +70,7 @@
         <name>LT681</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT681</DEV>
         </macros>
         <group_name></group_name>
@@ -74,6 +79,7 @@
         <name>LT682</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT682</DEV>
         </macros>
         <group_name></group_name>
@@ -82,6 +88,7 @@
         <name>LT683</name>
         <file>support/ami1700.bob</file>
         <macros>
+          <BIG_DSPL_PV>CstatV-LHe:$(DEV)</BIG_DSPL_PV>
           <DEV>LT683</DEV>
         </macros>
         <group_name></group_name>

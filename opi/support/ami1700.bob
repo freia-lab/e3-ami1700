@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>ami1700</name>
-  <macros>
-    <BIG_DSPL_PV>$(P):$(DEV)-level:sRdV</BIG_DSPL_PV>
-    <DEV>LT600</DEV>
-    <LABEL>CoW-$(DEV)</LABEL>
-    <P>CoW-LHe</P>
-  </macros>
   <height>700</height>
   <scripts>
     <script file="EmbeddedPy">
@@ -24,7 +18,7 @@ widget.getPropertyValue("macros").add("URL", PVUtil.getString(pvs[0]))
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>$(LABEL)</text>
+    <text>$(DEV)</text>
     <x use_class="true">20</x>
     <y use_class="true">0</y>
     <width>250</width>
@@ -153,7 +147,7 @@ widget.getPropertyValue("macros").add("URL", PVUtil.getString(pvs[0]))
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(BIG_DSPL_PV)</pv_name>
+    <pv_name>$(BIG_DSPL_PV):sRdV</pv_name>
     <x>240</x>
     <y>3</y>
     <width>230</width>
